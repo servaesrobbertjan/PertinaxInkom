@@ -1,0 +1,12 @@
+﻿<Application x:Class="PertinaxInkom.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PertinaxInkom"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="Anton">pack://application:,,,/Fonts/#Anton</FontFamily>
+        <FontFamily x:Key="UrbaneBold">pack://application:,,,/Fonts/Urbane-Bol.ttfd#Urbane Bold</FontFamily>
+        <FontFamily x:Key="UrbaneHeavy">pack://application:,,,/Fonts/Urbane-Heavy.ttf#Urbane Heavy</FontFamily>
+        <FontFamily x:Key="UrbaneMedium">pack://application:,,,/Fonts/Urbane-Medium.ttf#Urbane Medium</FontFamily>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="MySqlConnector" Version="2.4.0" />
+    <PackageReference Include="Swelio" Version="1.18.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Anton.ttf" />
+    <Resource Include="Fonts\Urbane-Bold.ttf" />
+    <Resource Include="Fonts\Urbane-Heavy.ttf" />
+    <Resource Include="Fonts\Urbane-Medium.ttf" />
+    <Resource Include="Images\Bezoeker.png" />
+    <Resource Include="Images\blackpaperback.jpg" />
+    <Resource Include="Images\Deelnemer.png" />
+    <Resource Include="Images\Herprint.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\pertinax.ico" />
+    <Resource Include="Images\QRCode.png" />
+    <Resource Include="Images\Settings.png" />
+    <Resource Include="Images\whitepaperback.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\ADOConnection.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ADOConnection.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\StoredProcedures.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StoredProcedures.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\ZebraConfig.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ZebraConfig.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\StoredProcedures.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StoredProcedures.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\ADOConnection.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ADOConnection.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Properties\ZebraConfig.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ZebraConfig.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

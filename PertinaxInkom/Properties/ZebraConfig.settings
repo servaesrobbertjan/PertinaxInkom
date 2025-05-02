@@ -1,0 +1,31 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PertinaxInkom.Properties" GeneratedClassName="ZebraConfig">
+  <Profiles />
+  <Settings>
+    <Setting Name="IpVisitorPrinter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.16.7.201</Value>
+    </Setting>
+    <Setting Name="IpParticipantPrinter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.16.7.202</Value>
+    </Setting>
+    <Setting Name="IpCrewVolunteerPrinter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10.16.7.203</Value>
+    </Setting>
+    <Setting Name="edition" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="zplcode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$@"
+^XA
+^FO40,2450^BQN,3,10^FDLA,{barcode}^FS
+^FO40,1200^BQN,3,10^FDLA,{barcode}^FS
+^FO40,1520^XGE:LOGO.GRF,1,1^FS
+^FT87,2354^A0B,67,67^FH\^FDPertinax LAN {edition}^FS
+^FT241,2354^A0B,42,40^FH\^FD{firstname}^FS
+^FT241,2166^A0B,42,40^FH\^FD{lastname}^FS
+^FT174,2354^A0B,67,67^FH\^FD{nickname}^FS
+^PQ1,0,1,Y
+^XZ";</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

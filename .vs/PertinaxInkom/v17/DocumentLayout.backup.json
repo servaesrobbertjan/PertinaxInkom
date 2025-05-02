@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\PertinaxInkom\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|d:\\projects\\pertinaxinkom\\pertinaxinkom\\ucvisitor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|solutionrelative:pertinaxinkom\\ucvisitor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|d:\\projects\\pertinaxinkom\\pertinaxinkom\\clsaddressdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|solutionrelative:pertinaxinkom\\clsaddressdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|d:\\projects\\pertinaxinkom\\pertinaxinkom\\clsuserroledb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|solutionrelative:pertinaxinkom\\clsuserroledb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|d:\\projects\\pertinaxinkom\\pertinaxinkom\\ucparticipant.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EF58408-B992-4A30-866F-4ACA74EB33C7}|PertinaxInkom\\PertinaxInkom.csproj|solutionrelative:pertinaxinkom\\ucparticipant.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 164,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsUserRoleDB.cs",
+              "DocumentMoniker": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\clsUserRoleDB.cs",
+              "RelativeDocumentMoniker": "PertinaxInkom\\clsUserRoleDB.cs",
+              "ToolTip": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\clsUserRoleDB.cs",
+              "RelativeToolTip": "PertinaxInkom\\clsUserRoleDB.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAArwFcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T16:10:05.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsAddressDB.cs",
+              "DocumentMoniker": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\clsAddressDB.cs",
+              "RelativeDocumentMoniker": "PertinaxInkom\\clsAddressDB.cs",
+              "ToolTip": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\clsAddressDB.cs",
+              "RelativeToolTip": "PertinaxInkom\\clsAddressDB.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAA5wDYAAACQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T15:28:06.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UcVisitor.xaml.cs",
+              "DocumentMoniker": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\UcVisitor.xaml.cs",
+              "RelativeDocumentMoniker": "PertinaxInkom\\UcVisitor.xaml.cs",
+              "ToolTip": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\UcVisitor.xaml.cs",
+              "RelativeToolTip": "PertinaxInkom\\UcVisitor.xaml.cs",
+              "ViewState": "AgIAANkAAAAAAAAAAADwv/wAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T11:07:10.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UcParticipant.xaml.cs",
+              "DocumentMoniker": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\UcParticipant.xaml.cs",
+              "RelativeDocumentMoniker": "PertinaxInkom\\UcParticipant.xaml.cs",
+              "ToolTip": "D:\\Projects\\PertinaxInkom\\PertinaxInkom\\UcParticipant.xaml.cs",
+              "RelativeToolTip": "PertinaxInkom\\UcParticipant.xaml.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwD8AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:53:34.767Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
