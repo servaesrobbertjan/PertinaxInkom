@@ -79,6 +79,15 @@ namespace PertinaxInkom.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C_BlockedUuid.
+        /// </summary>
+        internal static string C_BlockedUuid {
+            get {
+                return ResourceManager.GetString("C_BlockedUuid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C_UserRole.
         /// </summary>
         internal static string C_UserRole {
@@ -165,6 +174,15 @@ namespace PertinaxInkom.Properties {
         internal static string S_AddressByFullAddress {
             get {
                 return ResourceManager.GetString("S_AddressByFullAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S_BlockedUuidByUuid.
+        /// </summary>
+        internal static string S_BlockedUuidByUuid {
+            get {
+                return ResourceManager.GetString("S_BlockedUuidByUuid", resourceCulture);
             }
         }
         

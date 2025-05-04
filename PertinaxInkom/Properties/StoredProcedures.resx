@@ -189,4 +189,10 @@
   <data name="U_UserRole" xml:space="preserve">
     <value>U_UserRole</value>
   </data>
+  <data name="S_BlockedUuidByUuid" xml:space="preserve">
+    <value>S_BlockedUuidByUuid</value>
+  </data>
+  <data name="C_BlockedUuid" xml:space="preserve">
+    <value>C_BlockedUuid</value>
+  </data>
 </root>
