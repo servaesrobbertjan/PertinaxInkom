@@ -56,30 +56,22 @@ namespace PertinaxInkom
                 string scannedbarcode = txbticketbarcode.Text.ToString();
                 if (scannedbarcode != string.Empty)
                 {
-                    clsBarcode barcodeclass = new clsBarcode();
-                    if (barcodeclass.GetBarcodeType(scannedbarcode) == "Ticket")
+                    //check if ticketbarcode exist in the DB
+                    clsTicketDB ticketDB = new clsTicketDB();
+                    var ticket = ticketDB.GetTicketByUuid(scannedbarcode);
+
+                    //send info to next Uc
+                    if (ticket != null)
                     {
-                        //check if ticketbarcode exist in the DB
-                        clsTicketDB ticketDB = new clsTicketDB();
-                        var ticket = ticketDB.GetTicketByUuid(scannedbarcode);
-
-                        //send info to next Uc
-                        if (ticket != null)
-                        {
-                            txtError.Text = $"the ticket {scannedbarcode} is found for user: {ticket.User_Id} ther orderdate is {ticket.Order_Date}";
-                            // go the next Uc
-                            OpenUcParticipant2(ticket.User_Id);
-                        }
-                        //else return a error
-                        else
-                        {
-                            txtError.Text = $"the ticket {scannedbarcode} is not found";
-
-                        }
+                        txtError.Text = $"the ticket {scannedbarcode} is found for user: {ticket.User_Id} ther orderdate is {ticket.Order_Date}";
+                        // go the next Uc
+                        OpenUcParticipant2(ticket.User_Id);
                     }
+                    //else return a error
                     else
                     {
-                        txtError.Text = $"{scannedbarcode} is not a ticket";
+                        txtError.Text = $"the ticket {scannedbarcode} is not found";
+
                     }
                 }
             }
