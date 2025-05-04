@@ -90,59 +90,11 @@ namespace PertinaxInkom
             return barcodetypestr;
         }
 
-        public static string GenerateNewBarcode(string oldbarcode)
-        {
-            string edition = oldbarcode.Substring(0, 2);
-            string rand1 = oldbarcode.Substring(2, 3);
-            string barcodetype = oldbarcode.Substring(5, 1);
-            string rand2 = oldbarcode.Substring(6, 6);
-            string leeftijdgroep = oldbarcode.Substring(12, 1);
-            string rand3 = oldbarcode.Substring(13, 8);
-            string controldigits = oldbarcode.Substring(15, 2);
-            string newbarcode = "";
-
-            clsUserDB userDB = new clsUserDB();
-            Random random = new Random();
-            do
-            {
-                int newrand1 = 0;
-                do
-                {
-                    newrand1 = random.Next(100, 1000);
-                } while (newrand1 % 2 == 0);
-
-                int newrand2 = 0;
-                do
-                {
-                    newrand2 = random.Next(100000, 1000000);
-                } while (newrand2 % 2 != 0);
-
-                int newrand3 = 0;
-                newrand3 = random.Next(10000000, 100000000);
-
-                BigInteger partialbarcode = BigInteger.Parse(edition + newrand1.ToString() + barcodetype + newrand2.ToString() + leeftijdgroep + newrand3.ToString());
-                controldigits = (98 - (partialbarcode % 97)).ToString();
-                if (Convert.ToInt32(controldigits) <= 9)
-                {
-                    controldigits = "0" + controldigits;
-                }
-                if (Convert.ToInt32(controldigits) < 99)
-                {
-                    int stringlengt = controldigits.Length;
-                    controldigits = controldigits.Substring(stringlengt - 2, 2);
-                }
-
-                newbarcode = partialbarcode.ToString() + controldigits;
-            } while (userDB.GetUserByUuid(newbarcode) != null);
-            
-
-            return newbarcode;
-        }
-
         public static string CreateBarcode()
         {
             string barcode = "";
             clsUserDB userdb = new clsUserDB();
+            clsBlockedUuidsDB blockeddb = new clsBlockedUuidsDB();
 
             do
             {
@@ -174,7 +126,7 @@ namespace PertinaxInkom
 
                 barcode = partialbarcode.ToString() + controldigits;
 
-            } while (userdb.GetUserByUuid(barcode) != null);
+            } while ((userdb.GetUserByUuid(barcode) != null) || (blockeddb.GetBlockedUidByUuid(barcode) != null));
 
             return barcode;
         }
