@@ -235,9 +235,8 @@ namespace PertinaxInkom
                 }
 
                 //send to wristband printer
-                //string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, "visitor", txbFirstname.Text.ToString(), txbLastName.Text.ToString(), barcode);
-                //zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
-                zebraReturn = "succes";
+                string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, "visitor", txbFirstname.Text.ToString(), txbLastName.Text.ToString(), barcode);
+                zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
 
                 if (zebraReturn == "succes")
                 {
