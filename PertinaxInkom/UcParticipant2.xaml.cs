@@ -90,7 +90,7 @@ namespace PertinaxInkom
 
             //Collect tickettype from the DB
             clsTicketTypeDB ticketTypeDB = new clsTicketTypeDB();
-            string ticketname = "Visitor";
+            string ticketname = "Participant";
             var ticketType = ticketTypeDB.GetTicketType(ticketname);
 
             //get the editionnumber from the settings
