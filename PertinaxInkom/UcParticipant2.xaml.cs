@@ -114,7 +114,7 @@ namespace PertinaxInkom
             }
 
             // generate a new barcode for this edition
-            string barcode = clsBarcode.CreateBarcode(edition, ticketType.Name, age);
+            string barcode = clsBarcode.CreateBarcode();
 
             //zerbraconfig
             string Zebraprinter = ZebraConfig.Default.IpParticipantPrinter.ToString();

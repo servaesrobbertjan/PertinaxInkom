@@ -89,7 +89,7 @@ namespace PertinaxInkom
             clsWalletDB walletDB = new clsWalletDB();
 
             // generate a new barcode for this edition
-            string barcode = clsBarcode.CreateBarcode(edition, ticketType.Name, age);
+            string barcode = clsBarcode.CreateBarcode();
 
             //check if the visitor already exists in the DB.pertinaxlan
             string nickname = txbFirstname.Text.ToString() + " " + txbLastName.Text.ToString();

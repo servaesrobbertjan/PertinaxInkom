@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -138,78 +139,40 @@ namespace PertinaxInkom
             return newbarcode;
         }
 
-        public static string CreateBarcode(int edition, string ticketType, int age)
+        public static string CreateBarcode()
         {
-            string agegroup = "";
-            string barcodetype = "";
             string barcode = "";
             clsUserDB userdb = new clsUserDB();
+
             do
             {
-                switch (true)
+                var bytes = new byte[11]; // ≈ 88 bits, up to 26 decimal digits
+                using (var rng = RandomNumberGenerator.Create())
                 {
-                    case var _ when (age < 12):
-                        agegroup = "1";
-                        break;
-                    case var _ when (age < 16):
-                        agegroup = "5";
-                        break;
-                    default:
-                        agegroup = "8";
-                        break;
+                    rng.GetBytes(bytes);
                 }
 
-                Random random = new Random();
+                BigInteger result = new BigInteger(bytes);
+                result = BigInteger.Abs(result); // Ensure positive
+                string numberStr = result.ToString();
 
-                int newrand1 = 0;
-                do
+                // Keep only 20 digits and prepend '1' to make 21 digits starting with 1
+                if (numberStr.Length >= 20)
                 {
-                    newrand1 = random.Next(100, 1000);
-                } while (newrand1 % 2 == 0);
-
-                int newrand2 = 0;
-                do
+                    numberStr = "1" + numberStr.Substring(0, 20);
+                }
+                else
                 {
-                    newrand2 = random.Next(100000, 1000000);
-                } while (newrand2 % 2 != 0);
-
-                int newrand3 = 0;
-                newrand3 = random.Next(10000000, 100000000);
-
-                switch (ticketType)
-                {
-                    case "Ticket":
-                        barcodetype = random.Next(1, 4).ToString();
-                        break;
-                    case "Visitor":
-                        barcodetype = "6";
-                        break;
-                    case "Participant":
-                        barcodetype = "5";
-                        break;
-                    case "Volunteer":
-                        barcodetype = "8";
-                        break;
-                    case "Crew":
-                        barcodetype = "7";
-                        break;
-
+                    numberStr = "1" + numberStr.PadLeft(20, '0');
                 }
 
+                BigInteger partialbarcode = BigInteger.Parse(numberStr);
 
-                BigInteger partialbarcode = BigInteger.Parse(edition + newrand1.ToString() + barcodetype + newrand2.ToString() + agegroup + newrand3.ToString());
-                string controldigits = (98 - (partialbarcode % 97)).ToString();
-                if (Convert.ToInt32(controldigits) <= 9)
-                {
-                    controldigits = "0" + controldigits;
-                }
-                if (Convert.ToInt32(controldigits) < 99)
-                {
-                    int stringlengt = controldigits.Length;
-                    controldigits = controldigits.Substring(stringlengt - 2, 2);
-                }
+                // Calculate control digits
+                int mod97 = (int)(partialbarcode % 97);
+                string controldigits = (98 - mod97).ToString("D2");
 
-                        barcode = partialbarcode.ToString() + controldigits;
+                barcode = partialbarcode.ToString() + controldigits;
 
             } while (userdb.GetUserByUuid(barcode) != null);
 
