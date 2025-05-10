@@ -24,18 +24,19 @@ namespace PertinaxInkom
         private int counter = 0;
         private DispatcherTimer eidTimer;
         public event EventHandler CloseRequested;
+
         public winDebugModePrinter(List<clsUser> users)
         {
             InitializeComponent();
 
             Users = users ?? new List<clsUser>();
-            counter = users.Count();
+            counter = 0;  // Start counter at 0
             eidTimer = new DispatcherTimer();
             eidTimer.Interval = TimeSpan.FromSeconds(5);
             eidTimer.Tick += EidTimer_Tick;
             eidTimer.Start();
 
-            ShowUser(counter);
+            ShowUser(counter);  // Show first user immediately
         }
 
         private void EidTimer_Tick(object? sender, EventArgs e)
@@ -46,17 +47,17 @@ namespace PertinaxInkom
             {
                 eidTimer.Stop();
                 CloseRequested?.Invoke(this, EventArgs.Empty);
-                this.Close();
+                this.Close();  // Close the window
             }
-            else 
+            else
             {
-                ShowUser(counter);
-            }         
+                ShowUser(counter);  // Show next user
+            }
         }
 
         private void ShowUser(int index)
         {
-            if (index >=0 && index < Users.Count)
+            if (index >= 0 && index < Users.Count)
             {
                 var user = Users[index];
                 txtline1.Text = $"Printing {index + 1} of {Users.Count}";
@@ -65,4 +66,5 @@ namespace PertinaxInkom
             }
         }
     }
+
 }

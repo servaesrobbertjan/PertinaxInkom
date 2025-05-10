@@ -8,36 +8,13 @@
         Title="winDebugModePrinter" Height="200" Width="600" WindowStyle="None"
         Icon="pack://application:,,,/Images/pertinax.ico">
 
-    <Window.Resources>
-        <ImageBrush x:Key="ButtonImage" ImageSource="pack://application:,,,/Images/whitepaperback.png"></ImageBrush>
-        <Style TargetType="Button" x:Key="PaperButton">
-            <Setter Property="Background" Value="{StaticResource ButtonImage}"></Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#131313" />
-                                <Setter Property="Cursor" Value="Hand" />
-                                <!-- If we don't tell the background to change on hover, it will remain the same -->
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
     <Grid Name="Debugwindow">
+
         <Grid.Background>
             <ImageBrush ImageSource="/Images/whitepaperback.png" Opacity="1"/>
         </Grid.Background>
-        <Image Source="pack://application:,,,/Images/pertinax.ico" Opacity="0.5" Margin="20" Grid.Column="1" />
+
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
@@ -51,6 +28,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
+
+        <Image Source="pack://application:,,,/Images/pertinax.ico" Opacity="0.5" Margin="20" Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" />
         <TextBlock Name="txtTitel" Text="Debug Printer" FontSize="24" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
         <TextBlock Name="txtline1" Grid.Column="1" Grid.Row="2"/>
         <TextBlock Name="txtline2" Grid.Column="1" Grid.Row="3"/>
