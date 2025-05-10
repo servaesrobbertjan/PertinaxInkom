@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PertinaxInkom
 {
-    class clsBlockedUuids
+    public class clsBlockedUuids
     {
         private int _Id;
 
