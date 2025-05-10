@@ -33,7 +33,8 @@ namespace PertinaxInkom
         private void btnReprint_Click(object sender, RoutedEventArgs e)
         {
             string Zebraprinter = "";
-            string zebraReturn = "";
+            string ZebraReturn = "";
+            bool debugMode = false;
 
             // Validate UUID
             clsBarcode clsBarcode = new clsBarcode();
@@ -108,17 +109,28 @@ namespace PertinaxInkom
                 zplcode = clsZebraPrinter.GenerateZPL(ZebraConfig.Default.edition.ToString(), "visitor", user.First_Name, user.Last_Name, newUuid);
             }
 
-            // Send to printer
-            zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
-            if (zebraReturn == "succes")
+            // Send to printer if not in debug mode
+            debugMode = ZebraConfig.Default.DebugMode;
+            if (!debugMode) 
             {
-                Thread.Sleep(5000);
-                CloseRequested?.Invoke(this, EventArgs.Empty);
+                ZebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
+                if (ZebraReturn == "succes")
+                {
+                    Thread.Sleep(5000);
+                    CloseRequested?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    txterrors.Text = ZebraReturn;
+                }
             }
+            // if in debug mode send to WinDebugPrinter
             else
             {
-                txterrors.Text = zebraReturn;
-            }
+                List<clsUser> users = new List<clsUser> { user };
+                winDebugModePrinter winDebugModePrinter = new winDebugModePrinter(users);
+                winDebugModePrinter.Show();
+            }           
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

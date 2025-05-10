@@ -22,6 +22,9 @@
     <Compile Update="UcVisitor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="winDebugModePrinter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UcVisitor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="winDebugModePrinter.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
