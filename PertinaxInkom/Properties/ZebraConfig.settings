@@ -27,5 +27,8 @@
 ^PQ1,0,1,Y
 ^XZ";</Value>
     </Setting>
+    <Setting Name="DebugMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

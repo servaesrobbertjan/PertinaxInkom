@@ -30,6 +30,7 @@ namespace PertinaxInkom
             txtIpVisitor.Text = ZebraConfig.Default.IpVisitorPrinter.ToString();
             txtedition.Text = ZebraConfig.Default.edition.ToString();
             txtwristbandcode.Text = ZebraConfig.Default.zplcode.ToString();
+            ChbDebugMode.IsChecked = ZebraConfig.Default.DebugMode;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,17 @@ namespace PertinaxInkom
                 ZebraConfig.Default.zplcode = txtwristbandcode.Text;
                 ZebraConfig.Default.Save();
             }
+            if (ChbDebugMode.IsChecked == true)
+            {
+                ZebraConfig.Default.DebugMode = true;
+                ZebraConfig.Default.Save();
+            }
+            else
+            {
+                ZebraConfig.Default.DebugMode = false;
+                ZebraConfig.Default.Save();
+            }
+
             CloseRequested?.Invoke(this, EventArgs.Empty);
         }
 
