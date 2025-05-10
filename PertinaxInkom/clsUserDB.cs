@@ -234,7 +234,7 @@ namespace PertinaxInkom
                 {
                     int id = Convert.ToInt32(reader["id"]);
                     int addressId = reader.IsDBNull(reader.GetOrdinal("address_id")) ? 0 : Convert.ToInt32(reader["address_id"]);
-                    int walletId = reader.IsDBNull(reader.GetOrdinal("wallet_id")) ? 0 : Convert.ToInt32(reader["wallet_id"]);
+                    int walletId = reader.IsDBNull(reader.GetOrdinal("wallets_id")) ? 0 : Convert.ToInt32(reader["wallets_id"]);
                     string nickName = Convert.ToString(reader["nick_name"]);
                     string password = Convert.ToString(reader["password"]);
                     string firstName = Convert.ToString(reader["first_name"]);
