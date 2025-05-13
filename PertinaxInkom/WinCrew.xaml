@@ -1,0 +1,41 @@
+﻿<Window x:Class="PertinaxInkom.WinCrew"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PertinaxInkom"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="WinCrew" Height="200" Width="600" WindowStyle="None"
+        Icon="pack://application:,,,/Images/pertinax.ico">
+    <Grid Name="Crewwindow">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/whitepaperback.png" Opacity="1"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Image Source="pack://application:,,,/Images/pertinax.ico" Opacity="0.5" Margin="20" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" Grid.RowSpan="7" />
+        <TextBlock Name="txtTitel" Text="Crew Printer" FontSize="24" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+        <TextBlock Name="txterrors" FontSize="12" FontFamily="Urbane Medium" Foreground="red" MinHeight="150" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Center"/>
+        <TextBlock Name="txtPassword" Text="Password:" Grid.Column="1" Grid.Row="3" FontSize="16" FontFamily="urbane Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <PasswordBox Name="pwbPasword" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Opacity="0.25" VerticalContentAlignment="Center"/>
+        <Button Name="btnPrintCrew" KeyDown="btnPrintCrew_KeyDown" Content="Print Crew" Click="btnPrintCrew_Click" Grid.Column="1" Grid.Row="5" FontSize="16" FontFamily="urbane medium" BorderBrush="Black"/>
+        <Button Name="btnCancel" Content="Cancel" Click="btnCancel_Click"  Grid.Column="3" Grid.Row="5" FontSize="16" FontFamily="urbane medium" BorderBrush="Black"/>
+
+    </Grid>
+</Window>
