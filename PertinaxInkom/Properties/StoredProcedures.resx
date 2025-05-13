@@ -195,4 +195,7 @@
   <data name="C_BlockedUuid" xml:space="preserve">
     <value>C_BlockedUuid</value>
   </data>
+  <data name="S_AccountsRoleCrewOrAdmin" xml:space="preserve">
+    <value>S_AccountsRoleCrewOrAdmin</value>
+  </data>
 </root>

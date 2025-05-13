@@ -31,15 +31,15 @@ namespace PertinaxInkom
                 {
                     clsUser user = new clsUser(
                         Convert.ToInt32(reader["id"]),
-                        Convert.ToInt32(reader["address_id"]),
-                        Convert.ToInt32(reader["wallets_id"]),
+                        reader.IsDBNull(reader.GetOrdinal("address_id")) ? 0 : Convert.ToInt32(reader["address_id"]),
+                        reader.IsDBNull(reader.GetOrdinal("wallets_id")) ? 0 : Convert.ToInt32(reader["wallet_id"]),
                         Convert.ToString(reader["nick_name"]),
                         Convert.ToString(reader["password"]),
                         Convert.ToString(reader["first_name"]),
                         Convert.ToString(reader["last_name"]),
-                        Convert.ToString(reader["email"]),
-                        Convert.ToString(reader["uuid"]),
-                        Convert.ToDateTime(reader["birth_date"]),
+                        reader.IsDBNull(reader.GetOrdinal("email")) ? string.Empty : Convert.ToString(reader["email"]),
+                        reader.IsDBNull(reader.GetOrdinal("uuid")) ? string.Empty : Convert.ToString(reader["uuid"]),
+                        reader.IsDBNull(reader.GetOrdinal("birth_date")) ? (DateTime?)null : Convert.ToDateTime(reader["birth_date"]),
                         Convert.ToDateTime(reader["timestamp"]));
                     users.Add(user);
                 }
@@ -53,6 +53,45 @@ namespace PertinaxInkom
                 CN.Close();
             }
             return users;
+        }
+
+        public List<clsUser> GetCrew() 
+        {
+            MySqlConnection CN = new MySqlConnection(A.Pertinaxlanstr);
+            MySqlCommand CMD = new MySqlCommand("S_AccountsRoleCrewOrAdmin", CN);
+            CMD.CommandType = CommandType.StoredProcedure;
+            List<clsUser> crew = new List<clsUser>();
+
+            try
+            {
+                CN.Open();
+                MySqlDataReader reader = CMD.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    clsUser user = new clsUser(
+                        Convert.ToInt32(reader["id"]),
+                        reader.IsDBNull(reader.GetOrdinal("address_id")) ? 0 : Convert.ToInt32(reader["address_id"]),
+                        reader.IsDBNull(reader.GetOrdinal("wallets_id")) ? 0 : Convert.ToInt32(reader["wallets_id"]),
+                        Convert.ToString(reader["nick_name"]),
+                        Convert.ToString(reader["password"]),
+                        Convert.ToString(reader["first_name"]),
+                        Convert.ToString(reader["last_name"]),
+                        reader.IsDBNull(reader.GetOrdinal("email")) ? string.Empty : Convert.ToString(reader["email"]),
+                        reader.IsDBNull(reader.GetOrdinal("uuid")) ? string.Empty : Convert.ToString(reader["uuid"]),
+                        reader.IsDBNull(reader.GetOrdinal("birth_date")) ? (DateTime?)null : Convert.ToDateTime(reader["birth_date"]),
+                        Convert.ToDateTime(reader["timestamp"]));
+                    crew.Add(user);
+                }
+            }
+            catch (Exception ex) 
+            { 
+                throw ex; 
+            }
+            finally { 
+                CN.Close(); 
+            }
+            return crew;
         }
 
         public clsUser? GetUserByNickName(string nickname)
@@ -71,7 +110,7 @@ namespace PertinaxInkom
                 {
                     int id = Convert.ToInt32(reader["id"]);
                     int addressId = reader.IsDBNull(reader.GetOrdinal("address_id")) ? 0 : Convert.ToInt32(reader["address_id"]);
-                    int walletId = reader.IsDBNull(reader.GetOrdinal("wallet_id")) ? 0 : Convert.ToInt32(reader["wallet_id"]);
+                    int walletId = reader.IsDBNull(reader.GetOrdinal("wallets_id")) ? 0 : Convert.ToInt32(reader["wallets_id"]);
                     string nickName = Convert.ToString(reader["nick_name"]);
                     string password = Convert.ToString(reader["password"]);
                     string firstName = Convert.ToString(reader["first_name"]);

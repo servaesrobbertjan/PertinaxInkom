@@ -114,6 +114,7 @@ namespace PertinaxInkom
             clsRole roleVisitor = roleDB.GetRoleByName("visitor");           
             string password = BCrypt.Net.BCrypt.HashPassword(txbLastName.Text.ToString());
             string zebraReturn = "";
+            bool debugMode = false;
 
             //check if the visitor is here for the first time
             if (visitor1 == null)
@@ -148,19 +149,31 @@ namespace PertinaxInkom
                 clsUserRoleDB userRoleDB = new clsUserRoleDB();
                 int userRoleId = userRoleDB.CreateUserRole((int) visitoridpertinaxlan, roleVisitor.Id);
 
-                //send to wristband printer
-                string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, "visitor", txbFirstname.Text.ToString(), txbLastName.Text.ToString(), barcode);
-                zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
-
-                if (zebraReturn == "succes")
+                // Send to printer if not in debug mode
+                debugMode = ZebraConfig.Default.DebugMode;
+                if (!debugMode)
                 {
-                    Thread.Sleep(5000);
-                    CloseRequested?.Invoke(this, EventArgs.Empty);
+                    string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, "visitor", txbFirstname.Text.ToString(), txbLastName.Text.ToString(), barcode);
+                    zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
+
+                    if (zebraReturn == "succes")
+                    {
+                        Thread.Sleep(5000);
+                        CloseRequested?.Invoke(this, EventArgs.Empty);
+                    }
+                    // if sending failed return error
+                    else
+                    {
+                        txtError.Text = zebraReturn;
+                    }
                 }
-                // if sending failed return error
+                // if in debug mode send to WinDebugPrinter
                 else
                 {
-                    txtError.Text = zebraReturn;
+                    List<clsUser> users = new List<clsUser> { userDB.GetUserById((int)visitoridpertinaxlan) };
+                    winDebugModePrinter winDebugModePrinter = new winDebugModePrinter(users);
+                    winDebugModePrinter.Show();
+                    CloseRequested?.Invoke(this, EventArgs.Empty);
                 }
             }
             // else its not his first time
@@ -234,22 +247,33 @@ namespace PertinaxInkom
                     }
                 }
 
-                //send to wristband printer
-                string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, "visitor", txbFirstname.Text.ToString(), txbLastName.Text.ToString(), barcode);
-                zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
-
-                if (zebraReturn == "succes")
+                // Send to printer if not in debug mode
+                debugMode = ZebraConfig.Default.DebugMode;
+                if (!debugMode)
                 {
-                    Thread.Sleep(5000);
-                    CloseRequested?.Invoke(this, EventArgs.Empty);
-                    MessageBox.Show(zebraReturn);
+                    string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, "visitor", txbFirstname.Text.ToString(), txbLastName.Text.ToString(), barcode);
+                    zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
+
+                    if (zebraReturn == "succes")
+                    {
+                        Thread.Sleep(5000);
+                        CloseRequested?.Invoke(this, EventArgs.Empty);
+                        MessageBox.Show(zebraReturn);
+                    }
+                    // if sending failed return error
+                    else
+                    {
+                        txtError.Text = zebraReturn;
+                    }
                 }
-                // if sending failed return error
+                // if in debug mode send to WinDebugPrinter
                 else
                 {
-                    txtError.Text = zebraReturn;
+                    List<clsUser> users = new List<clsUser> { visitor1 };
+                    winDebugModePrinter winDebugModePrinter = new winDebugModePrinter(users);
+                    winDebugModePrinter.Show();
+                    CloseRequested?.Invoke(this, EventArgs.Empty);
                 }
-
             }
         }
 

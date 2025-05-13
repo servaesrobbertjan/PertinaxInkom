@@ -122,6 +122,7 @@ namespace PertinaxInkom
             //extra variables if needed
             int? visitoridpertinaxlan = null;
             string zebraReturn = "";
+            bool debugMode = false;
 
             //if the user fisrname and lastname are the same for the ticket and eid
             if (user.First_Name == txbFirstnameEID.Text && user.Last_Name == txbLastNameEID.Text)
@@ -172,23 +173,42 @@ namespace PertinaxInkom
                              txbZipcodeEID.Text.ToString(), txbCityEID.Text.ToString(), txbCountryEID.Text.ToString());
                 }
 
+                //check if the user has a wallet if not create one
+                if (user.Wallet_Id == null)
+                {
+                    clsWalletDB walletDB = new clsWalletDB();
+                    user.Wallet_Id = walletDB.CreateWallet(Convert.ToDecimal(0.00), Convert.ToInt32(txbZipcodeEID.Text));
+                }
+
                 //now we update the user in the DB
                 userDB.UpdateUser(user.Id, user.Address_Id, user.Wallet_Id, user.Nick_Name, user.Password,
                     user.First_Name, user.Last_Name, user.Email, barcode, user.Birth_Date);
 
-                //send to wristband printer
-                string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, user.Nick_Name.ToString(), user.First_Name.ToString(), user.Last_Name.ToString(), barcode);
-                zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
-
-                if (zebraReturn == "succes")
+                // Send to printer if not in debug mode
+                debugMode = ZebraConfig.Default.DebugMode;
+                if (!debugMode)
                 {
-                    Thread.Sleep(5000);
-                    CloseRequested?.Invoke(this, EventArgs.Empty);
+                    string zplcode = clsZebraPrinter.GenerateZPL(editionWristband, user.Nick_Name.ToString(), user.First_Name.ToString(), user.Last_Name.ToString(), barcode);
+                    zebraReturn = clsZebraPrinter.SendZPLToPrinter(zplcode, Zebraprinter);
+
+                    if (zebraReturn == "succes")
+                    {
+                        Thread.Sleep(5000);
+                        CloseRequested?.Invoke(this, EventArgs.Empty);
+                    }
+                    // if sending failed return error
+                    else
+                    {
+                        txtError.Text = zebraReturn;
+                    }
                 }
-                // if sending failed return error
+                // if in debug mode send to WinDebugPrinter
                 else
                 {
-                    txtError.Text = zebraReturn;
+                    List<clsUser> users = new List<clsUser> { user };
+                    winDebugModePrinter winDebugModePrinter = new winDebugModePrinter(users);
+                    winDebugModePrinter.Show();
+                    CloseRequested?.Invoke(this, EventArgs.Empty);
                 }
             }
             else

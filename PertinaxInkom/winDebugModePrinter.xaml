@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PertinaxInkom"
-        mc:Ignorable="d" 
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="winDebugModePrinter" Height="200" Width="600" WindowStyle="None"
         Icon="pack://application:,,,/Images/pertinax.ico">
 
@@ -29,7 +30,7 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <Image Source="pack://application:,,,/Images/pertinax.ico" Opacity="0.5" Margin="20" Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" />
+        <Image Source="pack://application:,,,/Images/pertinax.ico" Opacity="0.5" Margin="20" Grid.Column="1" Grid.Row="0" Grid.RowSpan="6" />
         <TextBlock Name="txtTitel" Text="Debug Printer" FontSize="24" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
         <TextBlock Name="txtline1" Grid.Column="1" Grid.Row="2"/>
         <TextBlock Name="txtline2" Grid.Column="1" Grid.Row="3"/>

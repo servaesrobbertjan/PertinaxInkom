@@ -22,6 +22,9 @@
     <Compile Update="UcVisitor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WinCrew.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="winDebugModePrinter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

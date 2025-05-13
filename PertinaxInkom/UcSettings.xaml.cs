@@ -78,5 +78,11 @@ namespace PertinaxInkom
         {
             CloseRequested?.Invoke(this, EventArgs.Empty);
         }
+
+        private void btnPrintCrew_Click(object sender, RoutedEventArgs e)
+        {
+            WinCrew winCrew = new WinCrew();
+            winCrew.Show();
+        }
     }
 }

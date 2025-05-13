@@ -112,7 +112,7 @@ namespace PertinaxInkom
             this.Id = _Id;
             this.Address_Id = _Address_Id;
             this.Wallet_Id = _Wallet_Id;
-            this._Nick_Name = _Nick_Name;
+            this.Nick_Name = _Nick_Name;
             this.Password = _Password;
             this.First_Name = _First_Name;
             this.Last_Name = _Last_Name;

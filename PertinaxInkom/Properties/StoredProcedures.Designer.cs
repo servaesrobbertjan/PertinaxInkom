@@ -160,6 +160,15 @@ namespace PertinaxInkom.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S_AccountsRoleCrewOrAdmin.
+        /// </summary>
+        internal static string S_AccountsRoleCrewOrAdmin {
+            get {
+                return ResourceManager.GetString("S_AccountsRoleCrewOrAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to S_Address.
         /// </summary>
         internal static string S_Address {

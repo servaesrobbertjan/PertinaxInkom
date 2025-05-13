@@ -28,6 +28,7 @@ namespace PertinaxInkom
         public UcReprint()
         {
             InitializeComponent();
+            Loaded += (s, e) => txbwristband.Focus();
         }
 
         private void btnReprint_Click(object sender, RoutedEventArgs e)
@@ -130,6 +131,7 @@ namespace PertinaxInkom
                 List<clsUser> users = new List<clsUser> { user };
                 winDebugModePrinter winDebugModePrinter = new winDebugModePrinter(users);
                 winDebugModePrinter.Show();
+                CloseRequested?.Invoke(this, EventArgs.Empty);
             }           
         }
 
