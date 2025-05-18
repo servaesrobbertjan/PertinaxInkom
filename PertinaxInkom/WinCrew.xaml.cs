@@ -58,14 +58,6 @@ namespace PertinaxInkom
                     {
                         counter++;
 
-                        if (user.Address_Id == null)
-                        {
-                            //check if crew gave address ifnot skip
-                            txterrors.Text = $"{counter} / {Crew.Count} : no Address for {user.Nick_Name}, skipping";
-                            await Task.Delay(500);
-                            continue;
-                        }
-
                         //generate a Uuid
                         string Uuid = "";  
                         Uuid = clsBarcode.CreateBarcode();
@@ -75,11 +67,22 @@ namespace PertinaxInkom
                         await Task.Delay(500);
                         clsWalletDB walletDB = new clsWalletDB();
 
+
                         if (user.Wallet_Id == null)
                         {
-                            clsAddressDB addressDB = new clsAddressDB();
-                            clsAddress address = addressDB.getAddress((int)user.Address_Id);
-                            user.Wallet_Id = walletDB.CreateWallet(Convert.ToDecimal(20.00), Convert.ToInt32(address.Zip_Code));  
+                            //if the address is not given
+                            if (user.Address_Id == null)
+                            {
+                                clsAddressDB addressDB = new clsAddressDB();
+                                clsAddress address = addressDB.getAddress((int)user.Address_Id);
+                                user.Wallet_Id = walletDB.CreateWallet(Convert.ToDecimal(20.00), 0000);
+                            }
+                            else
+                            {
+                                clsAddressDB addressDB = new clsAddressDB();
+                                clsAddress address = addressDB.getAddress((int)user.Address_Id);
+                                user.Wallet_Id = walletDB.CreateWallet(Convert.ToDecimal(20.00), Convert.ToInt32(address.Zip_Code));
+                            }
                         }
                         else
                         {

@@ -7,12 +7,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x86</Platforms>
+    <StartupObject>PertinaxInkom.App</StartupObject>
+    <ApplicationIcon>Images\pertinax.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\serva\.nuget\packages\swelio\1.18.31\contentFiles\any\net8.0\Swelio32.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\pertinax.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="MySqlConnector" Version="2.4.0" />
-    <PackageReference Include="Swelio" Version="1.18.31" />
+    <PackageReference Include="Swelio.Standard_DieterReinert" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>

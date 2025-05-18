@@ -32,8 +32,8 @@
 
         <Image Source="pack://application:,,,/Images/pertinax.ico" Opacity="0.5" Margin="20" Grid.Column="1" Grid.Row="0" Grid.RowSpan="6" />
         <TextBlock Name="txtTitel" Text="Debug Printer" FontSize="24" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
-        <TextBlock Name="txtline1" Grid.Column="1" Grid.Row="2"/>
-        <TextBlock Name="txtline2" Grid.Column="1" Grid.Row="3"/>
-        <TextBlock Name="txtline3" Grid.Column="1" Grid.Row="4"/>
+        <TextBlock Name="txtline1" FontSize="16" FontFamily="Urbane Medium" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Name="txtline2" FontSize="16" FontFamily="Urbane Medium" Grid.Column="1" Grid.Row="3"/>
+        <TextBlock Name="txtline3" FontSize="16" FontFamily="Urbane Medium" Grid.Column="1" Grid.Row="4"/>
     </Grid>
 </Window>

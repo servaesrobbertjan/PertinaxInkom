@@ -66,7 +66,7 @@ namespace PertinaxInkom
             }
         }
 
-  private void btnSaveAndPrint_Click(object sender, RoutedEventArgs e)
+        private void btnSaveAndPrint_Click(object sender, RoutedEventArgs e)
         {
             //get the tickettype info from the DB
             clsTicketTypeDB ticketTypeDB = new clsTicketTypeDB();
